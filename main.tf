@@ -54,7 +54,6 @@ data "template_file" "bootstrap" {
 resource "aws_instance" "sdc" {
   ami                  = data.aws_ami.sdc.id
   instance_type        = var.instance_size
-  iam_instance_profile = aws_iam_instance_profile.sdc-ssm-instance-profile.id
   tags = merge({
     Name = "${var.env}-${var.instance_name}-sdc"
   }, var.tags)
