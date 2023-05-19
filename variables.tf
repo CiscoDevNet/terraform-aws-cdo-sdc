@@ -43,3 +43,8 @@ variable "cdo_bootstrap_data" {
   description = "Base64-encoded CDO Bootstrap Data. You can generate this using [CDO](https://edge.us.cdo.cisco.com/content/docs/index.html#!t_install-a-cdo-connector-to-support-an-on-premises-sec-using-your-vm-image1.html) (see Step 19)."
   type        = string
 }
+
+variable "subnet_id" {
+  description = "The subnet to deploy the SDC instance in. The subnet must be in the VPC specified in `vpc_id`. We recommend deploying the SDC in a private subnet."
+  type        = string
+}
