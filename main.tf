@@ -36,9 +36,8 @@ resource "aws_security_group" "sdc" {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
-    cidr_blocks = [var.cidr]
+    cidr_blocks = ["0.0.0.0/0"]
   }
-
 
   tags = merge({
     Name = "${var.env}-${var.instance_name}-sec-sg"
