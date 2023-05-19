@@ -13,7 +13,7 @@ data "aws_ami" "sdc" {
   }
 
   filter {
-    name   = "tag:ami_version"
+    name   = "tag:version"
     values = [var.ami_version]
   }
 
