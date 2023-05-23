@@ -6,6 +6,10 @@ terraform {
   }
 }
 
+locals {
+  ami_version = "v0.0.1"  # see https://github.com/cisco-lockhart/sec_cookbook
+}
+
 data "aws_ami" "sdc" {
   filter {
     name   = "name"
@@ -14,7 +18,7 @@ data "aws_ami" "sdc" {
 
   filter {
     name   = "tag:version"
-    values = [var.ami_version]
+    values = [local.ami_version]
   }
 
   filter {
@@ -57,6 +61,7 @@ resource "aws_instance" "sdc" {
   iam_instance_profile = aws_iam_instance_profile.sdc-ssm-instance-profile.name
   tags = merge({
     Name = "${var.env}-${var.instance_name}-sdc"
+    AMI_Version = local.ami_version
   }, var.tags)
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.sdc.id]

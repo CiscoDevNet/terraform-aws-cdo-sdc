@@ -1,0 +1,43 @@
+name: Validate pull requests
+on:
+    pull_request:
+
+concurrency:
+    group: ${{ github.ref }}
+    cancel-in-progress: true
+
+env:
+    ROLE_TO_ASSUME: arn:aws:iam::692314432491:role/github-terraform-repo-role
+    AWS_REGION: us-east-1
+    PLAN_OUTPUT_NAME: plan.out
+    PLAN_COMBINED_OUTPUT_FILE: plan-output.txt
+    TFLINT_VERSION: v0.46.1
+    TERRAFORM_VERSION: 1.3.9
+
+permissions:
+    # This is needed for aws-actions/configure-aws-credentials to work
+    id-token: write
+    contents: read
+    # This is needed for terraform action to write comments on a PR
+    pull-requests: write
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository code
+              uses: actions/checkout@v2
+              with:
+                  terraform_version: ${{ env.TERRAFORM_VERSION }}
+            - name: Setup TFLint
+              uses: terraform-linters/setup-tflint@v3
+              with:
+                  tflint_version: ${{ env.TFLINT_VERSION }}
+            - name: Init TFLint
+              run: tflint --init
+            - name: Run TFLint
+              run: tflint -f compact
+            - name: Terraform Format Check
+              id: format
+              run: terraform fmt -check -recursive -no-color
+              continue-on-error: true

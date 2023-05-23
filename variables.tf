@@ -9,11 +9,6 @@ variable "instance_size" {
   }
 }
 
-variable "ami_version" {
-  description = "The version of the SDC AMI will be used."
-  type        = string
-}
-
 variable "env" {
   description = "A user-defined string to indicate the environment."
   type        = string
