@@ -47,7 +47,7 @@ module "example-sdc" {
 }
 ```
 
-## Connecting to your SEC instance
+## Connecting to your SDC instance
 
 Once this terraform module is applied, the SDC should be up and running. However, you may find that you may need to log in to your instance's shell to perform troubleshooting. For security reasons, we do not expose SSH on the SDC that we deploy. You can use AWS SSM Session Manager to connect. To learn more about how to use SSM to connect to your AWS instance, see [the AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with.html). The instance ID is required to connect, and you can get that from the `instance_id` output of this Terraform module.
 
