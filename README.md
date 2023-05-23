@@ -36,7 +36,7 @@ Please see [the usage documentation](USAGE.md) and the example below.
 
 ## Example
 ```
-module "weilue-sdc" {
+module "example-sdc" {
   source             = "git::https://github.com/cisco-lockhart/terraform-aws-cdo-sdc.git?ref=v0.0.1"
   env                = "example-env-ci"
   instance_name      = "example-instance-name"
