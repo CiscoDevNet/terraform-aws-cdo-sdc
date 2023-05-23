@@ -1,4 +1,3 @@
-<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -50,4 +49,3 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | The ID of the SDC instance. |
-<!-- END_TF_DOCS -->
