@@ -7,18 +7,13 @@ terraform {
 }
 
 locals {
-  ami_version = "v0.0.1"  # see https://github.com/cisco-lockhart/sec_cookbook
+  ami_version = "v0.0.5"  # see https://github.com/cisco-lockhart/sec_cookbook
 }
 
 data "aws_ami" "sdc" {
   filter {
     name   = "name"
-    values = ["cdo-connector*"]
-  }
-
-  filter {
-    name   = "tag:version"
-    values = [local.ami_version]
+    values = ["cdo-connector-${ami_version}-*"]
   }
 
   filter {
