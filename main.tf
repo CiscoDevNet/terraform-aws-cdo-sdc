@@ -28,7 +28,7 @@ data "aws_ami" "sdc" {
 
 resource "aws_security_group" "sdc" {
   vpc_id      = var.vpc_id
-  name        = "${var.env}-${var.instance_name}-sdc-sg"
+  name        = "${var.env}-${var.instance_name}-sdc-outbound-sg"
   description = "Security Group that allows all egress to the internet on TCP port 22 and 443"
 
   egress {
@@ -48,6 +48,10 @@ resource "aws_security_group" "sdc" {
   tags = merge({
     Name = "${var.env}-${var.instance_name}-sec-sg"
   }, var.tags)
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 data "template_file" "bootstrap" {
