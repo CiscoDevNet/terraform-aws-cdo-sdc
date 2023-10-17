@@ -29,7 +29,14 @@ data "aws_ami" "sdc" {
 resource "aws_security_group" "sdc" {
   vpc_id      = var.vpc_id
   name        = "${var.env}-${var.instance_name}-sdc-sg"
-  description = "Security Group that allows all egress to the internet on TCP port 443"
+  description = "Security Group that allows all egress to the internet on TCP port 22 and 443"
+
+  egress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port   = 443
