@@ -37,7 +37,8 @@ Please see [the usage documentation](USAGE.md) and the example below.
 ## Example
 ```
 module "example-sdc" {
-  source             = "git::https://github.com/cisco-lockhart/terraform-aws-cdo-sdc.git?ref=v0.0.1"
+  source             = "CiscoDevNet/cdo-sdc/aws"
+  version            = "0.0.8"
   env                = "example-env-ci"
   instance_name      = "example-instance-name"
   instance_size      = "r5a.xlarge"
