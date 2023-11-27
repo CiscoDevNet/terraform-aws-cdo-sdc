@@ -16,13 +16,14 @@ The [CDO documentation](https://docs.defenseorchestrator.com/#!c-secure-device-c
 
 # Supported Regions
 
-| Region       |
-| ------------ |
-| us-east-1    |
-| us-west-1    |
-| eu-west-1    |
-| eu-west-2    |
-| eu-central-1 |
+| Region         |
+| ---------------|
+| us-east-1      |
+| us-west-1      |
+| eu-west-1      |
+| eu-west-2      |
+| eu-central-1   |
+| ap-southeast-2 |
 
 # Architecture
 This terraform module will spin up the following:
