@@ -7,7 +7,7 @@ terraform {
 }
 
 locals {
-  ami_version = "0.1.2-SNAPSHOT"  # see https://github.com/cisco-lockhart/sec_cookbook
+  ami_version = "a1dc5c0f78915135f94f3ca03cce172f34c96bf5"  # see https://jenkins2.dev.lockhart.io/job/Bakery/job/cdo-connector-ami/
 }
 
 data "aws_ami" "sdc" {
